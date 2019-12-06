@@ -1,0 +1,296 @@
+html {
+    box-sizing: border-box;
+    overflow: hidden;
+    -webkit-overflow-scrolling: hidden;
+}
+* {
+    box-sizing: inherit;
+    /*
+    Prevent the browser rendering faux bold/italics for fonts without appropriate variants.
+    See: https://drafts.csswg.org/css-fonts-3/#propdef-font-synthesis
+    */
+    font-synthesis: none;
+}
+body {
+    margin: 0px;
+    overflow: hidden;
+    -webkit-overflow-scrolling: hidden;
+}
+
+body,
+input,
+select,
+button {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 11px;
+}
+
+div,
+body {
+    outline: none;
+}
+
+body input.component:focus {
+    border-width: 10 !important;
+    border-color: #85f !important;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 0.1s;
+}
+
+.fadeInLong {
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+}
+
+@keyframes fadeInDelay {
+    0% {
+        opacity: 0;
+    }
+    66% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.delayedFadeIn {
+    animation-name: fadeInDelay;
+    animation-duration: 1.5s;
+}
+
+/* Font CSS reset. Must also be used by the exporter (serialization.ts) */
+.DraftEditor-root {
+    font: normal normal normal 16px / normal system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.DraftEditor-editorContainer {
+    border-left: 1px;
+}
+
+.textEditor--hasAutoSize .DraftEditor-editorContainer [data-text] {
+    white-space: pre;
+}
+
+.svgShape svg {
+    width: 100%;
+    height: 100%;
+}
+
+.svgContainer svg {
+    display: block;
+}
+
+.rotate-top-center {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-top-center.png) 1x,
+                url(../images/cursors/rotate-top-center@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.rotate-top-right {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-top-right.png) 1x,
+                url(../images/cursors/rotate-top-right@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.rotate-mid-right {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-mid-right.png) 1x,
+                url(../images/cursors/rotate-mid-right@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.rotate-bottom-right {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-bottom-right.png) 1x,
+                url(../images/cursors/rotate-bottom-right@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.rotate-bottom-center {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-bottom-center.png) 1x,
+                url(../images/cursors/rotate-bottom-center@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.rotate-bottom-left {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-bottom-left.png) 1x,
+                url(../images/cursors/rotate-bottom-left@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.rotate-mid-left {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-mid-left.png) 1x,
+                url(../images/cursors/rotate-mid-left@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.rotate-top-left {
+    cursor: -webkit-image-set(
+                url(../images/cursors/rotate-top-left.png) 1x,
+                url(../images/cursors/rotate-top-left@2x.png) 2x
+            )
+            12 12,
+        default;
+}
+
+.flash::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 2px;
+    position: absolute;
+    animation-name: flash;
+    animation-duration: 400ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes flash {
+    0% {
+        box-shadow: unset;
+        background-color: transparent;
+    }
+    50% {
+        box-shadow: inset 0px 0px 0px 1px #0099ff, 0px 0px 5px 0px #0099ff;
+        background-color: rgba(251, 251, 251, 0.5);
+    }
+    100% {
+        box-shadow: unset;
+        background-color: transparent;
+    }
+}
+
+.spinner {
+    animation-name: spin;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg) translateZ(0);
+    }
+}
+
+.framer_popup_menu {
+    animation-name: popup;
+    animation-duration: 100ms;
+    animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hint {
+    animation-name: showHint;
+    animation-duration: 300ms;
+    animation-timing-function: ease-out;
+}
+
+@keyframes showHint {
+    0% {
+        transform: translate3d(0px, 60px, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.fadeInTooltip {
+    animation-name: fadeInTooltip;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeInTooltip {
+    0% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Console */
+div.preview-console details summary {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+div.preview-console details summary[open] {
+    text-overflow: none;
+    overflow: visible;
+    white-space: pre-wrap;
+}
+div.preview-console details summary::-webkit-details-marker {
+    font-size: 7px;
+    margin: 0 6px 2px 0 !important;
+}
+div.preview-console div[data-method] div:nth-child(2) {
+    margin-left: 0;
+}
+div.preview-console a {
+    text-decoration: none;
+    color: #0bf;
+}
+div.preview-console div[data-type="table"] div:first-child {
+    border-radius: 5px;
+    overflow: hidden;
+}
+div.preview-console div[data-type="table"] {
+    margin: 5px 24px 5px 0;
+}
+div.preview-console table {
+    background-image: none !important;
+}
+div.preview-console table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.04);
+}
